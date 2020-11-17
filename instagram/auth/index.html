@@ -18,7 +18,11 @@
 
         <script>
             $(function(){
-                console.log(window.location.href);
+                //console.log(window.location.href);
+                var url = new URL(window.location.href);
+                var code = url.searchParams.get("code");
+                
+                console.log(code);
             }
             );
         </script>
