@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="./gdpr-cookie-master/gdpr-cookie.css">
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+        <script src=./gdpr-cookie-master/gdpr-cookie.js></script>
+        <script>
+            $.gdprcookie.init();
+            //console.log('Nilan');
+            /*var browser = browser || chrome;
+            browser.cookies.onChanged.addListener(function(changeInfo) {
+            console.log('Cookie changed: ' +
+                        '\n * Cookie: ' + JSON.stringify(changeInfo.cookie) +
+                        '\n * Cause: ' + changeInfo.cause +
+                        '\n * Removed: ' + changeInfo.removed);
+            });*/
+
+            /*if (!String.prototype.trim) {
+                String.prototype.trim = function () {
+                    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+                };
+            }*/
+
+            function setCookie(cname, cvalue, exdays) {
+                var d = new Date();
+                d.setTime(d.getTime() + (exdays*24*60*60*1000));
+                var expires = "expires="+ d.toUTCString();
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+            }
+
+            function getCookie(cname) {
+                var name = cname + "=";
+                console.log(document.cookie);
+                var decodedCookie = decodeURIComponent(document.cookie);
+                console.log(decodedCookie);
+                var ca = decodedCookie.split(';');
+                //console.log(ca.length);
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    console.log(c);
+                    console.log(c.length);
+                    //c.trim();
+                    while (c.charAt(0) == ' ') {
+                        console.log('while');
+                        c = c.substring(1);
+                    }
+                    //console.log(name.length);
+                    if (c.indexOf(name) == 0) {
+                        //return c.substring(name.length, c.length);
+                        return c.substring(name.length);
+                    }
+                }
+                return "";
+            }
+
+            setCookie('Name1', 'Nilan', 3);
+            setCookie('Name2', 'Prasanna', 3);
+            setCookie('Name3', 'Perera', 3);
+            setCookie('Name4', 'Amarasinghe', 3);
+
+            console.log(getCookie('Name4'));
+
+
+            /*setCookie('Name1', 'Nilan', 0);
+            setCookie('Name2', 'Prasanna', 0);
+            setCookie('Name3', 'Perera', 0);
+            setCookie('Name4', 'Amarasinghe', 0);*/
+        </script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <script src="" async defer></script>
+    </body>
+</html>
