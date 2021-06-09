@@ -75,13 +75,15 @@
 
             console.log(getCookie('Name4'));
 
-
+            $("#target").click(function() {
+                setCookie('ButtonClick', 'This is button click cookie', 3);
+            });
             /*setCookie('Name1', 'Nilan', 0);
             setCookie('Name2', 'Prasanna', 0);
             setCookie('Name3', 'Perera', 0);
             setCookie('Name4', 'Amarasinghe', 0);*/
         </script>
-        
+
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-X97H4Z8FNE"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -95,7 +97,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+        <button id="cookie-button">Click</button>
         <script src="" async defer></script>
     </body>
 </html>
