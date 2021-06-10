@@ -88,14 +88,16 @@
 
             //console.log(getCookie('Name4'));
 
-            
-            setCookie('Name1', 'Nilan', 0);
-            setCookie('Name2', 'Prasanna', 0);
-            setCookie('Name3', 'Perera', 0);
-            setCookie('Name4', 'Amarasinghe', 0);
+            $(function() {
+                    setCookie('Name1', 'Nilan', 0);
+                    setCookie('Name2', 'Prasanna', 0);
+                    setCookie('Name3', 'Perera', 0);
+                    setCookie('Name4', 'Amarasinghe', 0);
 
-            setCookie('_ga', 'dfdfd', 0, 'localhost');
-            setCookie('_ga', 'dfdfd', 0);
+                    setCookie('_ga', 'dfdfd', 0, 'localhost');
+                    setCookie('_ga', 'dfdfd', 0);
+                }
+            );
             
 
         </script>
@@ -188,7 +190,12 @@
                 }
                 catch(err) {}    
             };
-            clearCookie('_ga','.nilana.github.io','/');
+            $(function(){
+                //clearCookie('_ga','.nilana.github.io','/');
+                console.log('delete called');
+                document.cookie =  "_ga=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;domain=" + location.hostname.replace(/^www\./i, "");
+            }
+            );
             //clearCookie('__utmz','.yourdomain.com','/');
         </script>
         <script src="" async defer></script>
