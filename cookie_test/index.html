@@ -18,8 +18,18 @@
             crossorigin="anonymous"></script>
         <script src=./gdpr-cookie-master/gdpr-cookie.js></script>
 
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-X97H4Z8FNE"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-X97H4Z8FNE');
+        </script>
+
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script>
+            //import Cookies from 'js-cookie';
             $.gdprcookie.init();
             //console.log('Nilan');
             /*var browser = browser || chrome;
@@ -36,27 +46,30 @@
                 };
             }*/
 
-            function setCookie(cname, cvalue, exdays) {
+            function setCookie(cname, cvalue, exdays, domain='') {
                 var d = new Date();
                 d.setTime(d.getTime() + (exdays*24*60*60*1000));
                 var expires = "expires="+ d.toUTCString();
-                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                if(domain !=''){
+                    domain = 'Domain='+domain;
+                }
+                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;"+domain;
             }
 
             function getCookie(cname) {
                 var name = cname + "=";
-                console.log(document.cookie);
+                //console.log(document.cookie);
                 var decodedCookie = decodeURIComponent(document.cookie);
-                console.log(decodedCookie);
+                //console.log(decodedCookie);
                 var ca = decodedCookie.split(';');
                 //console.log(ca.length);
                 for(var i = 0; i <ca.length; i++) {
                     var c = ca[i];
-                    console.log(c);
-                    console.log(c.length);
+                    //console.log(c);
+                    //console.log(c.length);
                     //c.trim();
                     while (c.charAt(0) == ' ') {
-                        console.log('while');
+                        //console.log('while');
                         c = c.substring(1);
                     }
                     //console.log(name.length);
@@ -73,24 +86,18 @@
             setCookie('Name3', 'Perera', 3);
             setCookie('Name4', 'Amarasinghe', 3);
 
-            console.log(getCookie('Name4'));
+            //console.log(getCookie('Name4'));
 
-            $("#target").click(function() {
-                setCookie('ButtonClick', 'This is button click cookie', 3);
-            });
-            /*setCookie('Name1', 'Nilan', 0);
+            
+            setCookie('Name1', 'Nilan', 0);
             setCookie('Name2', 'Prasanna', 0);
             setCookie('Name3', 'Perera', 0);
-            setCookie('Name4', 'Amarasinghe', 0);*/
-        </script>
+            setCookie('Name4', 'Amarasinghe', 0);
 
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-X97H4Z8FNE"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+            setCookie('_ga', 'dfdfd', 0, 'localhost');
+            setCookie('_ga', 'dfdfd', 0);
+            
 
-            gtag('config', 'G-X97H4Z8FNE');
         </script>
     </head>
     <body>
@@ -98,6 +105,92 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <button id="cookie-button">Click</button>
+        <script>
+            $("#cookie-button").click(function() {
+                setCookie('ButtonClick', 'This is button click cookie', 3);
+            });
+
+            manageCookies();
+            document.execCommand("_ga");
+            //document.cookie = "Name1=''; expires=0; path=/";
+            function manageCookies(){
+                var decodedCookie = decodeURIComponent(document.cookie);
+                var ca = decodedCookie.split(';');
+
+                console.log(ca);
+
+                for(var i = 0; i <ca.length; i++) {
+                    var c = ca[i];
+                    
+                    //console.log(c.length);
+                    //c.trim();
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    c = c.split('=');
+                    //console.log(c);
+                    console.log(c[0]);
+                    if (c[0] == '_ga') {
+                        console.log('xxxxxxx');
+                        //return c.substring(name.length, c.length);
+                        //return c.substring(name.length);
+                        setCookie(c[0],'',0);
+                    }
+                    //console.log(name.length);
+                }
+            }
+
+
+
+
+            //test
+            function clearCookie(name, domain, path){
+                try {
+                    function Get_Cookie( check_name ) {
+                            // first we'll split this cookie up into name/value pairs
+                            // note: document.cookie only returns name=value, not the other components
+                            var a_all_cookies = document.cookie.split(';'),
+                                a_temp_cookie = '',
+                                cookie_name = '',
+                                cookie_value = '',
+                                b_cookie_found = false;
+                    
+                            for ( i = 0; i < a_all_cookies.length; i++ ) {
+                                // now we'll split apart each name=value pair
+                                a_temp_cookie = a_all_cookies[i].split( '=' );
+                
+                                // and trim left/right whitespace while we're at it
+                                cookie_name = a_temp_cookie[0].replace(/^\s+|\s+$/g, '');
+                
+                                // if the extracted name matches passed check_name
+                                if ( cookie_name == check_name ) {
+                                    b_cookie_found = true;
+                                    // we need to handle case where cookie has no value but exists (no = sign, that is):
+                                    if ( a_temp_cookie.length > 1 ) {
+                                        cookie_value = unescape( a_temp_cookie[1].replace(/^\s+|\s+$/g, '') );
+                                    }
+                                    // note that in cases where cookie is initialized but no value, null is returned
+                                    return cookie_value;
+                                    break;
+                                }
+                                a_temp_cookie = null;
+                                cookie_name = '';
+                            }
+                            if ( !b_cookie_found ) {
+                            return null;
+                            }
+                        }
+                        if (Get_Cookie(name)) {
+                            var domain = domain || document.domain;
+                            var path = path || "/";
+                            document.cookie = name + "=; expires=" + new Date + "; domain=" + domain + "; path=" + path;
+                        }
+                }
+                catch(err) {}    
+            };
+            clearCookie('_ga','localhost','/');
+            //clearCookie('__utmz','.yourdomain.com','/');
+        </script>
         <script src="" async defer></script>
     </body>
 </html>
