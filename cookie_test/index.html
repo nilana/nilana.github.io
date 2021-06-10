@@ -197,8 +197,8 @@
                 console.log(location.hostname.replace(/^www\./i, ""));
                 setInterval(function(){
                     console.log('xxxxxx');
-                    //document.cookie =  "_ga=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;domain=" + location.hostname.replace(/^www\./i, "");
-                    setCookie('_ga', null, 0);
+                    document.cookie =  "_ga=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;domain=" + location.hostname.replace(/^www\./i, "");
+                    //setCookie('_ga', null, 0);
                 }, 500);
                 
             }
