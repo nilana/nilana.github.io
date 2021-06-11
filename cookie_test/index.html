@@ -108,13 +108,18 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <button id="cookie-button">Click</button>
+        <button id="manage-cookies">Manage Cookies</button>
         <script>
             $("#cookie-button").click(function() {
                 setCookie('ButtonClick', 'This is button click cookie', 3);
             });
 
-            manageCookies();
-            document.execCommand("_ga");
+            $("#manage-cookies").click(function() {
+                manageCookies();
+            });
+
+            //manageCookies();
+            //document.execCommand("_ga");
             //document.cookie = "Name1=''; expires=0; path=/";
             function manageCookies(){
                 var decodedCookie = decodeURIComponent(document.cookie);
@@ -135,9 +140,10 @@
                     console.log(c[0]);
                     if (c[0] == '_ga') {
                         console.log('xxxxxxx');
+                        var domain = location.hostname.replace(/^www\./i, "");
                         //return c.substring(name.length, c.length);
                         //return c.substring(name.length);
-                        setCookie(c[0],'',0);
+                        setCookie(c[0],'',0, domain);
                     }
                     //console.log(name.length);
                 }
@@ -191,7 +197,8 @@
                 }
                 catch(err) {}    
             };
-            $(function(){
+
+            /*$(function(){
                 //clearCookie('_ga','.nilana.github.io','/');
                 console.log('delete called');
                 console.log(location.hostname.replace(/^www\./i, ""));
@@ -203,7 +210,8 @@
                 }, 500);
                 
             }
-            );
+            );*/
+
             //clearCookie('__utmz','.yourdomain.com','/');
         </script>
         <script src="" async defer></script>
