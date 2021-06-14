@@ -183,11 +183,11 @@
                 console.log(json);
                 setInterval(function(){
                     json.cookies.forEach(function(cookie){
-                        console.log(cookie.name);
                         if(cookie.domainWithWWW === false){
                             domain  = domain.replace("www.",'');
                         }
                         setCookie(cookie.name, null, 0 , domain);
+                        console.log(cookie.name);
                     });
                 }, 1000);
                 
