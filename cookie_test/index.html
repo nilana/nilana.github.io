@@ -88,10 +88,10 @@
 
             //var url = location.hostname;
             var url = window.location.href;
-            console.log(url);
+            //console.log(url);
             var domain = new URL(url);
             domain = domain.hostname;
-            console.log(domain);
+            //console.log(domain);
             setCookie('DomainTest' , 'DomainTest', 3, domain);
 
 
@@ -160,13 +160,13 @@
 
             $(function(){
                 //clearCookie('_ga','.nilana.github.io','/');
-                console.log('delete called');
-                console.log(location.hostname.replace(/^www\./i, ""));
+                //console.log('delete called');
+                //console.log(location.hostname.replace(/^www\./i, ""));
                 var domain = location.hostname.replace(/^www\./i, "");
                 setInterval(function(){
-                    console.log('xxxxxx');
+                    //console.log('xxxxxx');
                     //document.cookie =  "_ga=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;domain=" + location.hostname.replace(/^www\./i, "");
-                    setCookie('_ga', null, 0, domain);
+                    //setCookie('_ga', null, 0, domain);
                     //setCookie('_ga', null, 0);
                 }, 500);
                 //console.log('aaaaaaa');
@@ -175,6 +175,10 @@
             );
 
             //clearCookie('__utmz','.yourdomain.com','/');
+
+            $.getJSON("/cookie_test/json/external_cookies.json", function(json) {
+                console.log(json); // this will show the info it in firebug console
+            });
         </script>
         <script src="" async defer></script>
     </body>
