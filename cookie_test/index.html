@@ -88,6 +88,7 @@
                                 if(cookie.domainWithWWW === false){
                                     domain  = domain.replace("www.",'');
                                 }
+                                Cookies.remove(cookie.name);
                                 //setCookie(cookie.name, null, 0 , domain);
                                 //console.log(cookie.name);
                                 //console.log(domain);
