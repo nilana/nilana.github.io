@@ -1,16 +1,109 @@
 {
     "coookies": [
         {
-            "name": "nilan"
+            "name": "mmapi.store.p.0",
+            "category": 1,
+            "domainWithWWW": false
         },
         {
-            "name": "prasanna"
+            "name": "mmapi.store.s.0",
+            "category": 1,
+            "domainWithWWW": false
         },
         {
-            "name": "perera"
+            "name": "_fbp",
+            "category": 1,
+            "domainWithWWW": false
         },
         {
-            "name": "amarasinghe"
+            "name": "_ga",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_gid",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_gcl_au",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_uetsid",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_gat_UA-150648078-1",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_gat_UA-1744929-8",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_cs_id",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_cs_s",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_cs_c",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "__adal_first_visit",
+            "category": 1,
+            "domainWithWWW": true
+        },
+        {
+            "name": "__adal_conversion_window_start",
+            "category": 1,
+            "domainWithWWW": true
+        },
+        {
+            "name": "__adal_last_visit",
+            "category": 1,
+            "domainWithWWW": true
+        },
+        {
+            "name": "__adal_session_start",
+            "category": 1,
+            "domainWithWWW": true
+        },
+        {
+            "name": "__adal_landing",
+            "category": 1,
+            "domainWithWWW": true
+        },
+        {
+            "name": "__adal_campaign",
+            "category": 1,
+            "domainWithWWW": true
+        },
+        {
+            "name": "_uetvid",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_gat_UA-150648078-3",
+            "category": 1,
+            "domainWithWWW": false
+        },
+        {
+            "name": "_gat",
+            "category": 1,
+            "domainWithWWW": false
         }
     ]
 }
