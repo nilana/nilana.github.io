@@ -176,23 +176,38 @@
 
             //clearCookie('__utmz','.yourdomain.com','/');
 
-            var url = window.location.href;
-            var domain = new URL(url);
-            domain = domain.hostname;
-            $.getJSON("/cookie_test/json/external_cookies.json", function(json) {
-                console.log(json);
-                setInterval(function(){
-                    json.cookies.forEach(function(cookie){
-                        if(cookie.domainWithWWW === false){
-                            domain  = domain.replace("www.",'');
-                        }
-                        setCookie(cookie.name, null, 0 , domain);
-                        console.log(cookie.name);
-                        console.log(domain);
-                    });
-                }, 1000);
-                
-            });
+            managePreferencesForFirstPartyExternalCookies();
+            function managePreferencesForFirstPartyExternalCookies(pageLoad = true){
+                var url = window.location.href;
+                var domain = new URL(url);
+                domain = domain.hostname;
+                $.getJSON("/cookie_test/json/external_cookies.json", function(json) {
+                    console.log(json);
+
+                    if(pageLoad === true){
+                        setInterval(function(){
+                            json.cookies.forEach(function(cookie){
+                                if(cookie.domainWithWWW === false){
+                                    domain  = domain.replace("www.",'');
+                                }
+                                setCookie(cookie.name, null, 0 , domain);
+                                console.log(cookie.name);
+                                console.log(domain);
+                            });
+                        }, 1000);
+                    }else{
+                        json.cookies.forEach(function(cookie){
+                                if(cookie.domainWithWWW === false){
+                                    domain  = domain.replace("www.",'');
+                                }
+                                setCookie(cookie.name, null, 0 , domain);
+                                console.log(cookie.name);
+                                console.log(domain);
+                        });
+                    }
+                    
+                });
+            }
         </script>
         <script src="" async defer></script>
     </body>
