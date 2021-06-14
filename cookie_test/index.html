@@ -17,6 +17,7 @@
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"></script>
         <script src=./gdpr-cookie-master/gdpr-cookie.js></script>
+        <script src=./js/js.cookie.min.js></script>
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-X97H4Z8FNE"></script>
         <script>
@@ -56,7 +57,7 @@
                 document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"+domain;
             }
 
-            Cookies.set('FPCPConfig', '1-1;2-1;3-1;4-1', { expires: 365 });
+            Cookies.set('FPCPConfig', '1-1;2-1;3-1;4-1');
 
             function getCookie(cname) {
                 var name = cname + "=";
@@ -184,7 +185,7 @@
                 var url = window.location.href;
                 var domain = new URL(url);
                 domain = domain.hostname;
-                $.getJSON("/cookie_test/json/external_cookies.json", function(json) {
+                $.getJSON("/cookie_test/js/external_cookies.json", function(json) {
                     console.log(json);
 
                     if(pageLoad === true){
