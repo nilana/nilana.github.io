@@ -10,8 +10,6 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="stylesheet" href="./gdpr-cookie-master/gdpr-cookie.css">
         <script
             src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -30,87 +28,30 @@
 
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script>
-            //import Cookies from 'js-cookie';
-            $.gdprcookie.init();
-            //console.log('Nilan');
-            /*var browser = browser || chrome;
-            browser.cookies.onChanged.addListener(function(changeInfo) {
-            console.log('Cookie changed: ' +
-                        '\n * Cookie: ' + JSON.stringify(changeInfo.cookie) +
-                        '\n * Cause: ' + changeInfo.cause +
-                        '\n * Removed: ' + changeInfo.removed);
-            });*/
+           
 
-            /*if (!String.prototype.trim) {
-                String.prototype.trim = function () {
-                    return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
-                };
-            }*/
-
-            function setCookie(cname, cvalue, exdays, domain='') {
-                var d = new Date();
-                d.setTime(d.getTime() + (exdays*24*60*60*1000));
-                var expires = "expires="+ d.toUTCString();
-                if(domain !=''){
-                    domain = ';Domain='+domain;
-                }
-                document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/"+domain;
-            }
-
+           
             Cookies.set('FPCPConfig', '1-1;2-1;3-1;4-1',{ expires: 365 });
 
             console.log(Cookies.get('FPCPConfig'));
 
-            function getCookie(cname) {
-                var name = cname + "=";
-                //console.log(document.cookie);
-                var decodedCookie = decodeURIComponent(document.cookie);
-                //console.log(decodedCookie);
-                var ca = decodedCookie.split(';');
-                //console.log(ca.length);
-                for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    //console.log(c);
-                    //console.log(c.length);
-                    //c.trim();
-                    while (c.charAt(0) == ' ') {
-                        //console.log('while');
-                        c = c.substring(1);
-                    }
-                    //console.log(name.length);
-                    if (c.indexOf(name) == 0) {
-                        //return c.substring(name.length, c.length);
-                        return c.substring(name.length);
-                    }
-                }
-                return "";
-            }
+            Cookies.set('FPCPConfig', '1-1;2-1;3-1;4-1',{ expires: 365 });
 
-            setCookie('Name1', 'Nilan', 3);
-            setCookie('Name2', 'Prasanna', 3);
-            setCookie('Name3', 'Perera', 3);
-            setCookie('Name4', 'Amarasinghe', 3);
+            Cookies.set('Name1', 'Nilan', { expires: 365 });
+            Cookies.set('Name2', 'Prasanna', { expires: 365 });
+            Cookies.set('Name3', 'Perera', { expires: 365 });
+            Cookies.set('Name4', 'Amarasinghe', { expires: 365 });
 
-            //var url = location.hostname;
             var url = window.location.href;
             //console.log(url);
             var domain = new URL(url);
             domain = domain.hostname;
             //console.log(domain);
-            setCookie('DomainTest' , 'DomainTest', 3, domain);
+            Cookies.set('DomainTest' , 'DomainTest', { expires: 365, domain: domain });
 
-
-            //console.log(getCookie('Name4'));
 
             $(function() {
-                    /*setCookie('Name1', 'Nilan', 0);
-                    setCookie('Name2', 'Prasanna', 0);
-                    setCookie('Name3', 'Perera', 0);
-                    setCookie('Name4', 'Amarasinghe', 0);*/
-
-                    //setCookie('_ga', 'dfdfd', 0, 'localhost');
-                    /*setCookie('_ga', null, 0);
-                    setCookie('_ga_X97H4Z8FNE', null, 0);*/
+                    
                 }
             );
             
@@ -131,59 +72,10 @@
             $("#manage-cookies").click(function() {
                 manageCookies();
             });
-
-            //manageCookies();
-            //document.execCommand("_ga");
-            //document.cookie = "Name1=''; expires=0; path=/";
-            function manageCookies(){
-                var decodedCookie = decodeURIComponent(document.cookie);
-                var ca = decodedCookie.split(';');
-
-                console.log(ca);
-
-                for(var i = 0; i <ca.length; i++) {
-                    var c = ca[i];
-                    
-                    //console.log(c.length);
-                    //c.trim();
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                    c = c.split('=');
-                    //console.log(c);
-                    console.log(c[0]);
-                    if (c[0] == '_ga') {
-                        console.log('xxxxxxx');
-                        var domain = location.hostname.replace(/^www\./i, "");
-                        //return c.substring(name.length, c.length);
-                        //return c.substring(name.length);
-                        setCookie(c[0],'',0, domain);
-                    }
-                    //console.log(name.length);
-                }
-            }
-
-            $(function(){
-                //clearCookie('_ga','.nilana.github.io','/');
-                //console.log('delete called');
-                //console.log(location.hostname.replace(/^www\./i, ""));
-                var domain = location.hostname.replace(/^www\./i, "");
-                setInterval(function(){
-                    //console.log('xxxxxx');
-                    //document.cookie =  "_ga=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;domain=" + location.hostname.replace(/^www\./i, "");
-                    //setCookie('_ga', null, 0, domain);
-                    //setCookie('_ga', null, 0);
-                }, 500);
-                //console.log('aaaaaaa');
-                
-            }
-            );
-
-            //clearCookie('__utmz','.yourdomain.com','/');
             
-            managePreferencesForFirstPartyExternalCookies();
+            managePreferencesForExternalCookies();
 
-            function managePreferencesForFirstPartyExternalCookies(pageLoad = true){
+            function managePreferencesForExternalCookies(pageLoad = true){
                 var url = window.location.href;
                 var domain = new URL(url);
                 domain = domain.hostname;
@@ -196,9 +88,9 @@
                                 if(cookie.domainWithWWW === false){
                                     domain  = domain.replace("www.",'');
                                 }
-                                setCookie(cookie.name, null, 0 , domain);
-                                console.log(cookie.name);
-                                console.log(domain);
+                                //setCookie(cookie.name, null, 0 , domain);
+                                //console.log(cookie.name);
+                                //console.log(domain);
                             });
                         }, 1000);
                     }else{
@@ -206,9 +98,9 @@
                                 if(cookie.domainWithWWW === false){
                                     domain  = domain.replace("www.",'');
                                 }
-                                setCookie(cookie.name, null, 0 , domain);
-                                console.log(cookie.name);
-                                console.log(domain);
+                                //setCookie(cookie.name, null, 0 , domain);
+                                //console.log(cookie.name);
+                                //console.log(domain);
                         });
                     }
                     
