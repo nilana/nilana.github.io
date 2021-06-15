@@ -116,39 +116,42 @@
 
                 $.getJSON("/cookie_test/js/external_cookies.json", function(json) {
                     
-                    json.cookies.forEach(function(cookie){
-                        var removeThisCookie = false;
-                        if(cookie.domainWithWWW === false){
-                            domain  = domain.replace("www.",'');
-                        }
-                        switch(cookie.category){
-                            case 2:
-                                if(isPerformanceCookieEnabled === false){
-                                    //console.log('isPerformanceCookieEnabled=false');
-                                    removeThisCookie = true;
-                                }
-                            break;
+                    setInterval(function(){
+                        json.cookies.forEach(function(cookie){
+                            var removeThisCookie = false;
+                            if(cookie.domainWithWWW === false){
+                                domain  = domain.replace("www.",'');
+                            }
+                            switch(cookie.category){
+                                case 2:
+                                    if(isPerformanceCookieEnabled === false){
+                                        //console.log('isPerformanceCookieEnabled=false');
+                                        removeThisCookie = true;
+                                    }
+                                break;
 
-                            case 3:
-                                if(isMarketingCookieEnabled === false){
-                                    //console.log('isMarketingCookieEnabled=false');
-                                    removeThisCookie = true;
-                                }
-                            break;
+                                case 3:
+                                    if(isMarketingCookieEnabled === false){
+                                        //console.log('isMarketingCookieEnabled=false');
+                                        removeThisCookie = true;
+                                    }
+                                break;
 
-                            case 4:
-                                if(isFunctionalCookieEnabled === false){
-                                    //console.log('isFunctionalCookieEnabled=false');
-                                    removeThisCookie = true;
-                                }
-                            break;
-                        }
-                        //console.log(cookie.name+'/'+cookie.category);
-                        //console.log(removeThisCookie);
-                        if(removeThisCookie){
-                            Cookies.remove(cookie.name, { path: '/', domain: domain });
-                        }
-                    });
+                                case 4:
+                                    if(isFunctionalCookieEnabled === false){
+                                        //console.log('isFunctionalCookieEnabled=false');
+                                        removeThisCookie = true;
+                                    }
+                                break;
+                            }
+                            //console.log(cookie.name+'/'+cookie.category);
+                            //console.log(removeThisCookie);
+                            if(removeThisCookie){
+                                Cookies.remove(cookie.name, { path: '/', domain: domain });
+                            }
+                        });
+                    })
+                    
                     
                 });
             }
