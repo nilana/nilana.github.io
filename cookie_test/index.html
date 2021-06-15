@@ -101,27 +101,27 @@
                                 switch(cookie.category){
                                     case 2:
                                         if(isPerformanceCookieEnabled === false){
-                                            console.log('isPerformanceCookieEnabled=false');
+                                            //console.log('isPerformanceCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 3:
                                         if(isMarketingCookieEnabled === false){
-                                            console.log('isMarketingCookieEnabled=false');
+                                            //console.log('isMarketingCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 4:
                                         if(isFunctionalCookieEnabled === false){
-                                            console.log('isFunctionalCookieEnabled=false');
+                                            //console.log('isFunctionalCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
                                 }
-                                console.log(cookie.name+'/'+cookie.category);
-                                console.log(removeThisCookie);
+                                //console.log(cookie.name+'/'+cookie.category);
+                                //console.log(removeThisCookie);
                                 if(removeThisCookie){
                                     Cookies.remove(cookie.name, { path: '/', domain: domain });
                                 }
@@ -157,11 +157,11 @@
                 }
                 if (FPCP_config != undefined && FPCP_config != '') {
                     var list = FPCP_config.split(';');
-                    console.log(index);
-                    console.log(list);
+                    //console.log(index);
+                    //console.log(list);
                     if (list != undefined && list.length == 4) {
                         var val = list[index];
-                        console.log(val);
+                        //console.log(val);
                         if (val != undefined) {
                             var vals = val.split('-');
                             if (vals != undefined && vals.length == 2 && vals[1] == 1) {
