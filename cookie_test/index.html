@@ -83,8 +83,8 @@
                 var domain = new URL(url);
                 domain = domain.hostname;
 
-                var isPerformanceCookieEnable = isFunctionalCookieEnable();
-                var isMarketingCookieEnable = isPerformanceCookieEnable();
+                var isPerformanceCookieEnable = isPerformanceCookieEnable();
+                var isMarketingCookieEnable = isMarketingCookieEnable();
                 var isFunctionalCookieEnable = isFunctionalCookieEnable();
 
                 $.getJSON("/cookie_test/js/external_cookies.json", function(json) {
