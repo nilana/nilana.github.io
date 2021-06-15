@@ -94,8 +94,7 @@
             var FPCP_config = '';
 
             $("#cookie-button").click(function() {
-                //setCookie('ButtonClick', 'This is button click cookie', 3);
-                managePreferencesForExternalCookies(false);
+                setCookie('ButtonClick', 'This is button click cookie', 3);
             });
 
             $("#manage-cookies").click(function() {
@@ -103,7 +102,7 @@
             });
             
             window.addEventListener("load", function(){
-                //managePreferencesForExternalCookies();
+                managePreferencesForExternalCookies();
             });
             
 
@@ -122,12 +121,32 @@
                     if(pageLoad === true){
 
                         setInterval(function(){
-                            //console.log('yyyyy');
+                            console.log('yyyyy');
                             json.cookies.forEach(function(cookie){
                                 var removeThisCookie = false;
                                 if(cookie.domainWithWWW === false){
                                     domain  = domain.replace("www.",'');
                                 }
+
+                                /*switch(cookie.category){
+                                    case 2:
+                                        if(isPerformanceCookieEnabled === false){
+                                            removeThisCookie = true;
+                                        }
+                                    break;
+
+                                    case 3:
+                                        if(isMarketingCookieEnabled === false){
+                                            removeThisCookie = true;
+                                        }
+                                    break;
+
+                                    case 4:
+                                        if(isFunctionalCookieEnabled === false){
+                                            removeThisCookie = true;
+                                        }
+                                    break;
+                                }*/
                                 removeThisCookie = shouldCookieBeRemoved(cookie.category, isPerformanceCookieEnabled, isMarketingCookieEnabled, isFunctionalCookieEnabled);
                                 if(removeThisCookie){
                                     Cookies.remove(cookie.name, { path: '/', domain: domain });
@@ -140,7 +159,25 @@
                             if(cookie.domainWithWWW === false){
                                 domain  = domain.replace("www.",'');
                             }
+                            /*switch(cookie.category){
+                                    case 2:
+                                        if(isPerformanceCookieEnabled === false){
+                                            removeThisCookie = true;
+                                        }
+                                    break;
 
+                                    case 3:
+                                        if(isMarketingCookieEnabled === false){
+                                            removeThisCookie = true;
+                                        }
+                                    break;
+
+                                    case 4:
+                                        if(isFunctionalCookieEnabled === false){
+                                            removeThisCookie = true;
+                                        }
+                                    break;
+                            }*/
                             removeThisCookie = shouldCookieBeRemoved(cookie.category, isPerformanceCookieEnabled, isMarketingCookieEnabled, isFunctionalCookieEnabled);
                             if(removeThisCookie){
                                 Cookies.remove(cookie.name, { path: '/', domain: domain });
