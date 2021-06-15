@@ -78,26 +78,14 @@
             
             managePreferencesForExternalCookies();
 
-            function isPerformanceCookieEnable() {
-                return getCookieConfigVal(1);
-            }
-
-            function isMarketingCookieEnable() {
-                return getCookieConfigVal(2);
-            }
-
-            function isFunctionalCookieEnable() {
-                return getCookieConfigVal(3);
-            }
-
             function managePreferencesForExternalCookies(pageLoad = true){
                 var url = window.location.href;
                 var domain = new URL(url);
                 domain = domain.hostname;
 
-                var test = isPerformanceCookieEnable();
-                var isMarketingCookieEnable = isMarketingCookieEnable();
-                var isFunctionalCookieEnable = isFunctionalCookieEnable();
+                var isPerformanceCookieEnabled = isPerformanceCookieEnable();
+                var isMarketingCookieEnabled  = isMarketingCookieEnable();
+                var isFunctionalCookieEnabled  = isFunctionalCookieEnable();
 
                 $.getJSON("/cookie_test/js/external_cookies.json", function(json) {
                     //console.log(json);
@@ -112,19 +100,19 @@
 
                                 switch(cookie.category){
                                     case 2:
-                                        if(isPerformanceCookieEnable === false){
+                                        if(isPerformanceCookieEnabled === false){
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 3:
-                                        if(isMarketingCookieEnable === false){
+                                        if(isMarketingCookieEnabled === false){
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 4:
-                                        if(isFunctionalCookieEnable === false){
+                                        if(isFunctionalCookieEnabled === false){
                                             removeThisCookie = true;
                                         }
                                     break;
@@ -144,6 +132,18 @@
                     }
                     
                 });
+            }
+
+            function isPerformanceCookieEnable() {
+                return getCookieConfigVal(1);
+            }
+
+            function isMarketingCookieEnable() {
+                return getCookieConfigVal(2);
+            }
+
+            function isFunctionalCookieEnable() {
+                return getCookieConfigVal(3);
             }
 
             function getCookieConfigVal(index) {
