@@ -142,6 +142,7 @@
 
 
                     json.cookies.forEach(function(cookie){
+                        var removeThisCookie = false;
                         if(cookie.domainWithWWW === false){
                             domain  = domain.replace("www.",'');
                         }
