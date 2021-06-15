@@ -78,6 +78,18 @@
             
             managePreferencesForExternalCookies();
 
+            function isPerformanceCookieEnable() {
+                return getCookieConfigVal(1);
+            }
+
+            function isMarketingCookieEnable() {
+                return getCookieConfigVal(2);
+            }
+
+            function isFunctionalCookieEnable() {
+                return getCookieConfigVal(3);
+            }
+
             function managePreferencesForExternalCookies(pageLoad = true){
                 var url = window.location.href;
                 var domain = new URL(url);
@@ -132,18 +144,6 @@
                     }
                     
                 });
-            }
-
-            function isPerformanceCookieEnable() {
-                return getCookieConfigVal(1);
-            }
-
-            function isMarketingCookieEnable() {
-                return getCookieConfigVal(2);
-            }
-
-            function isFunctionalCookieEnable() {
-                return getCookieConfigVal(3);
             }
 
             function getCookieConfigVal(index) {
