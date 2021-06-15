@@ -101,18 +101,21 @@
                                 switch(cookie.category){
                                     case 2:
                                         if(isPerformanceCookieEnabled === false){
+                                            console.log('isPerformanceCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 3:
                                         if(isMarketingCookieEnabled === false){
+                                            console.log('isMarketingCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 4:
                                         if(isFunctionalCookieEnabled === false){
+                                            console.log('isFunctionalCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
