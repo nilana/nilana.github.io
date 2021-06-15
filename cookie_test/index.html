@@ -102,7 +102,7 @@
             });
             
             window.addEventListener("load", function(){
-                managePreferencesForExternalCookies();
+                managePreferencesForExternalCookies(false);
             });
             
 
@@ -152,7 +152,7 @@
                                 }
                             });
                         }, 1000);
-                        
+
                     if(pageLoad === false){
                         clearInterval(managePreferences);
                     }
