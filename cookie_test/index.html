@@ -102,7 +102,7 @@
             });
             
             window.addEventListener("load", function(){
-                managePreferencesForExternalCookies(false);
+                managePreferencesForExternalCookies();
             });
             
 
@@ -118,17 +118,17 @@
                 $.getJSON("/cookie_test/js/external_cookies.json", function(json) {
                     //console.log(json);
 
-                    //if(pageLoad === true){
-                    var managePreferences =  
+                    if(pageLoad === true){
+
                         setInterval(function(){
-                            console.log('xxxxxxx');
+                            console.log('yyyyy');
                             json.cookies.forEach(function(cookie){
                                 var removeThisCookie = false;
                                 if(cookie.domainWithWWW === false){
                                     domain  = domain.replace("www.",'');
                                 }
 
-                                switch(cookie.category){
+                                /*switch(cookie.category){
                                     case 2:
                                         if(isPerformanceCookieEnabled === false){
                                             removeThisCookie = true;
@@ -146,25 +146,20 @@
                                             removeThisCookie = true;
                                         }
                                     break;
-                                }
+                                }*/
+                                removeThisCookie = shouldCookieBeRemoved(cookie.category, isPerformanceCookieEnabled, isMarketingCookieEnabled, isFunctionalCookieEnabled)
                                 if(removeThisCookie){
                                     Cookies.remove(cookie.name, { path: '/', domain: domain });
                                 }
                             });
                         }, 1000);
-
-                    if(pageLoad === false){
-                        clearInterval(managePreferences);
-                    }
-                    
-                    
-                    /*}else{
+                    }else{
                         json.cookies.forEach(function(cookie){
                             var removeThisCookie = false;
                             if(cookie.domainWithWWW === false){
                                 domain  = domain.replace("www.",'');
                             }
-                            switch(cookie.category){
+                            /*switch(cookie.category){
                                     case 2:
                                         if(isPerformanceCookieEnabled === false){
                                             removeThisCookie = true;
@@ -182,16 +177,39 @@
                                             removeThisCookie = true;
                                         }
                                     break;
-                            }
+                            }*/
+                            removeThisCookie = shouldCookieBeRemoved(cookie.category, isPerformanceCookieEnabled, isMarketingCookieEnabled, isFunctionalCookieEnabled)
                             if(removeThisCookie){
                                 Cookies.remove(cookie.name, { path: '/', domain: domain });
                             }
                         });
-                    }*/
+                    }
                     
                 });
             }
 
+            function shouldCookieBeRemoved(category, isPerformanceCookieEnabled, isMarketingCookieEnabled, isFunctionalCookieEnabled){
+
+                switch(category){
+                    case 2:
+                        if(isPerformanceCookieEnabled === false){
+                            return true;
+                        }
+                    case 3:
+                        if(isMarketingCookieEnabled === false){
+                            return true;
+                        }
+                    break;
+
+                    case 4:
+                        if(isFunctionalCookieEnabled === false){
+                            return true;
+                        }
+                    break;
+                }
+
+            }
+            
             function isPerformanceCookieEnable() {
                 return getCookieConfigVal(1);
             }
