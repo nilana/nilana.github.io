@@ -94,12 +94,12 @@
             var FPCP_config = '';
 
             $("#cookie-button").click(function() {
-                //setCookie('ButtonClick', 'This is button click cookie', 3);
-                managePreferencesForExternalCookies(false);
+                setCookie('ButtonClick', 'This is button click cookie', 3);
             });
 
             $("#manage-cookies").click(function() {
-                manageCookies();
+                //manageCookies();
+                managePreferencesForExternalCookies(false);
             });
             
             window.addEventListener("load", function(){
