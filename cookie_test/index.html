@@ -118,8 +118,10 @@
                 $.getJSON("/cookie_test/js/external_cookies.json", function(json) {
                     //console.log(json);
 
-                    if(pageLoad === true){
+                    //if(pageLoad === true){
+                    var managePreferences =  
                         setInterval(function(){
+                            console.log('xxxxxxx');
                             json.cookies.forEach(function(cookie){
                                 var removeThisCookie = false;
                                 if(cookie.domainWithWWW === false){
@@ -129,33 +131,34 @@
                                 switch(cookie.category){
                                     case 2:
                                         if(isPerformanceCookieEnabled === false){
-                                            //console.log('isPerformanceCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 3:
                                         if(isMarketingCookieEnabled === false){
-                                            //console.log('isMarketingCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 4:
                                         if(isFunctionalCookieEnabled === false){
-                                            //console.log('isFunctionalCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
                                 }
-                                //console.log(cookie.name+'/'+cookie.category);
-                                //console.log(removeThisCookie);
                                 if(removeThisCookie){
                                     Cookies.remove(cookie.name, { path: '/', domain: domain });
                                 }
                             });
                         }, 1000);
-                    }else{
+                        
+                    if(pageLoad === false){
+                        clearInterval(managePreferences);
+                    }
+                    
+                    
+                    /*}else{
                         json.cookies.forEach(function(cookie){
                             var removeThisCookie = false;
                             if(cookie.domainWithWWW === false){
@@ -164,21 +167,18 @@
                             switch(cookie.category){
                                     case 2:
                                         if(isPerformanceCookieEnabled === false){
-                                            //console.log('isPerformanceCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 3:
                                         if(isMarketingCookieEnabled === false){
-                                            //console.log('isMarketingCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
 
                                     case 4:
                                         if(isFunctionalCookieEnabled === false){
-                                            //console.log('isFunctionalCookieEnabled=false');
                                             removeThisCookie = true;
                                         }
                                     break;
@@ -187,7 +187,7 @@
                                 Cookies.remove(cookie.name, { path: '/', domain: domain });
                             }
                         });
-                    }
+                    }*/
                     
                 });
             }
