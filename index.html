@@ -51,29 +51,30 @@
             
         </script>
 
-<script>
+        <script>
 
-    function FBEventTracking() {
-        
-        //var eventID = '771eb8f5-19b5-4af0-8806-f8cfedb0122a';
-    
-        console.log('FBEventTracking eventID:'+eventID);
+            function FBEventTracking() {
+                
+                //var eventID = '771eb8f5-19b5-4af0-8806-f8cfedb0122a';
+            
+                console.log('FBEventTracking eventID:'+eventID);
 
-        fbq('track', 'AddToCart',
-            // begin required parameter object
-            {
-                value: $('.selected_size').attr('data-price').replace('£', ''),
-                currency: 'GBP',
-                content_type: 'product', // required property
-                content_ids: $('#ProductId').val() // required property, if not using 'contents' property
-            },
-            { eventID: eventID}
-        );
+                fbq('track', 'AddToCart',
+                    // begin required parameter object
+                    {
+                        value: $('.selected_size').attr('data-price').replace('£', ''),
+                        currency: 'GBP',
+                        content_type: 'product', // required property
+                        content_ids: $('#ProductId').val() // required property, if not using 'contents' property
+                    },
+                    { eventID: eventID}
+                );
 
-    };
+            };
 
-    FBEventTracking();
-    </script> 
+            FBEventTracking();
+            
+        </script> 
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
