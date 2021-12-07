@@ -33,6 +33,22 @@
     <body>
         Under construction
         This is test
+
+        <script>
+    
+            var eventID = 'be87185e-8849-49dd-8aef-206378e34e68';
+            
+        
+            console.log('eventID:'+eventID);
+        
+            fbq('track', 'ViewContent', {
+            content_ids: ['178752'],
+            content_type: 'product'
+            },
+            { eventID: eventID }
+            );
+            
+        </script>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
